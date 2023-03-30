@@ -13,6 +13,7 @@ int main()
     sock_desc = socket(AF_INET, SOCK_STREAM, 0);
     if (sock_desc == -1)
         printf("Error in socket creation");
+        return 1;
     client.sin_family = AF_INET;
     client.sin_addr.s_addr = INADDR_ANY;
     client.sin_port = 3003;
