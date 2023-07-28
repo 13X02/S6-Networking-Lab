@@ -7,27 +7,32 @@
 #include <sys/types.h>
 #include <string.h>
 #include <netinet/in.h>
-#include <errno.h>
-#include <time.h>
+
 int main(int argc, char *argv[])
 {
     int n, s, t;
-    struct sockaddr_in servaddr, local, rem;
+
+    struct sockaddr_in servaddr, local;
+
     char buffer[1024];
+    
     if (argc < 3)
     {
         printf("usage:client<server-addr><port>");
         exit(0);
     }
-    if ((s = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
+    
+    if ((s = socket(AF_INET, SOCK_DGRAM, 0)) ==-1)
     {
         perror("error in socket creation");
         exit(0);
     }
+    
     bzero((char *)&local, sizeof(local));
     local.sin_family = AF_INET;
     local.sin_port = htons(6677);
     local.sin_addr.s_addr = inet_addr(argv[1]);
+    
     if (bind(s, (struct sockaddr *)&local, sizeof(local)) == -1)
     {
         perror("bind error");

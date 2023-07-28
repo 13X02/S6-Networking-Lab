@@ -20,7 +20,7 @@ int main() {
     
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY;
-    server.sin_port = htons(3003); // Use htons() to convert the port number to network byte order
+    server.sin_port = htons(3005); // Use htons() to convert the port number to network byte order
     
     k = bind(sock_desc, (struct sockaddr*)&server, sizeof(server));
     if (k == -1) {
